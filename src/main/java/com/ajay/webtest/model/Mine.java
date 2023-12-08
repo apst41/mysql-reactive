@@ -18,4 +18,6 @@ public class Mine {
     private Long id;
 
     private String name;
+
+    private Long age;
 }

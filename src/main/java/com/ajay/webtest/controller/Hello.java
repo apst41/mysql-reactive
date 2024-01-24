@@ -12,7 +12,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -31,11 +30,13 @@ public class Hello {
 
     @PostMapping("/getAge")
     public Flux<Mine> save(@RequestBody List<Long> list){
+        log.info("fetching result");
         return mineService.findByAge(list);
     }
 
    @GetMapping("/mine/{name}")
     public Mono<Mine> findByName(@PathVariable  String name){
+        log.info("fetching result");
         return mineService.findByName(name);
    }
 

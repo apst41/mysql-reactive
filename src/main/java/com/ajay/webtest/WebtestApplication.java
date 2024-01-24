@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 import org.springframework.web.reactive.config.EnableWebFlux;
+import reactor.core.publisher.Hooks;
+
 @SpringBootApplication
 @EnableWebFlux
 @EnableR2dbcRepositories
@@ -13,8 +15,9 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 public class WebtestApplication {
 
 	public static void main(String[] args) {
+		Hooks.enableAutomaticContextPropagation();
 		MDC.put("service-name","async-service");
-		MDC.put("correlation-id","startup-correlation");
+		MDC.put("correlation-id",Thread.currentThread().toString());
 		SpringApplication.run(WebtestApplication.class, args);
 
 	}

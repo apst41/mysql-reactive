@@ -11,8 +11,9 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import javax.validation.ValidationException;
 import java.util.List;
+import java.util.function.Function;
+import java.util.logging.Level;
 
 
 @RestController
@@ -32,15 +33,17 @@ public class Hello {
     @PostMapping("/getAge")
     public Flux<Mine> save(@RequestBody List<Long> list){
         log.info("fetching result");
-        throw new ValidationException("Invalid Results");
-        //return mineService.findByAge(list);
+        return mineService.findByAge(list);
     }
 
    @GetMapping("/mine/{name}")
     public Mono<Mine> findByName(@PathVariable  String name){
-        log.info("fetching result");
-       throw new ValidationException("Invalid Results");
-     //   return mineService.findByName(name);
+       log.info("fetched result");
+        return   mineService.findByName(name).contextWrite(Function.identity()).flatMap(data->{
+            log.info("ajay");
+            return Mono.just(data);
+        });
+
    }
 
 }

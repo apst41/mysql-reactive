@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.publisher.SignalType;
+import reactor.util.annotation.Nullable;
 
 import java.util.List;
 import java.util.function.Function;
@@ -25,6 +27,9 @@ public class Hello {
     @Autowired
     HelloService helloService;
 
+    @Autowired
+    Gsonhelper gsonhelper;
+
     @PostMapping("/mine")
     public Mono<Mine> save(@RequestBody Mine mine){
      return mineService.save(mine);
@@ -39,11 +44,7 @@ public class Hello {
    @GetMapping("/mine/{name}")
     public Mono<Mine> findByName(@PathVariable  String name){
        log.info("fetched result");
-        return   mineService.findByName(name).contextWrite(Function.identity()).flatMap(data->{
-            log.info("ajay");
-            return Mono.just(data);
-        });
-
+        return   mineService.findByName(name).log("meow",Level.INFO);
    }
 
 }

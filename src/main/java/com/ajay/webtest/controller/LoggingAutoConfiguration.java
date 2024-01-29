@@ -4,12 +4,12 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplicat
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
-@ComponentScan({"com.ajay.webtest"})
-@ConditionalOnWebApplication(
-        type = ConditionalOnWebApplication.Type.REACTIVE
-)
-public class LoggingAutoConfiguration {
-    public LoggingAutoConfiguration() {
-    }
-}
+//@Configuration
+//@ComponentScan({"com.ajay.webtest"})
+//@ConditionalOnWebApplication(
+//        type = ConditionalOnWebApplication.Type.REACTIVE
+//)
+//public class LoggingAutoConfiguration {
+//    public LoggingAutoConfiguration() {
+//    }
+//}

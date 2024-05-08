@@ -20,9 +20,7 @@ public class ReactorLoggingHookConfig {
 
     @PostConstruct
     void contextOperatorHook() {
-        Hooks.onEachOperator("mdc", Operators.lift(($, coreSubscriber) -> {
-            return new MDCContextLifter(coreSubscriber);
-        }));
+        Hooks.onEachOperator("mdc", Operators.lift(($, coreSubscriber) -> new MDCContextLifter(coreSubscriber)));
     }
 
     @PreDestroy

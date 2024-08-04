@@ -1,12 +1,12 @@
 package com.ajay.webtest.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity(name = "mine")
 @Getter

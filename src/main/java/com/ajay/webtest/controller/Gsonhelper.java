@@ -2,10 +2,11 @@ package com.ajay.webtest.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.validation.ValidationException;
 import org.springframework.context.annotation.Configuration;
 import reactor.core.publisher.Mono;
 
-import javax.validation.ValidationException;
+
 
 @Configuration
 public class Gsonhelper {

@@ -27,6 +27,9 @@ public class Hello {
     @Autowired
     HelloService helloService;
 
+
+
+
     @Autowired
     Gsonhelper gsonhelper;
 
@@ -46,5 +49,12 @@ public class Hello {
        log.info("fetched result");
         return   mineService.findByName(name).log("meow",Level.INFO);
    }
+
+   @GetMapping
+    public Mono<String> hello(){
+        return Mono.just("hello");
+
+   }
+
 
 }
